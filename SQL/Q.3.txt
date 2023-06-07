@@ -1,0 +1,115 @@
+CREATE TABLE 
+ (Employee_id int AUTO_INCREMENT,
+			   First_name varchar(200),
+			   Last_name varchar(200),
+			   salary int ,
+			   Joining_date DATETIME,
+			   Department varchar(200), 
+			   PRIMARY KEY (Employee_id));
+
+INSERT INTO EMPLOYEE(First_name,Last_name,salary,Joining_date,Department)
+		VALUES ("John","Abraham",1000000,"01-JAN-13 12:00:00 AM","Banking"),
+			("Micheal","Clarke",800000,"01-JAN-13 12:00:00 AM","Insurance"),
+			("Roy","Thomas",700000,"01-FEB-13 12:00:00 AM","Banking"),
+			("Tom","Jose",600000,"01-FEB-13 12:00:00 AM","Insurance"),
+			("Jerry","Pinto",650000,"01-FEB-13 12:00:00 AM","Insurance"),
+			("Phillip","Mathew",750000,"01-JAN-13 12:00:00 AM","Services"),
+			("TestName1","123",650000,"01-FEB-13 12:00:00 AM","Services"),
+			("TestName2","Lname%",600000,"01-FEB-13 12:00:00 AM","Insurance");
+
+CREATE TABLE Incentive(Employee_id int,
+                       Incentive_date varchar(200),
+                       Incentive_amount varchar(200),
+                       FOREIGN KEY(Employee_id) REFERENCES EMPLOYEE(Employee_id));
+
+
+INSERT INTO incentive(Employee_id,Incentive_date,Incentive_amount)
+			VALUES(1,"1-FEB-13",5000),
+			(2,"1-FEB-13",3000),
+			(3,"1-FEB-13",4000),
+			(1,"1-JAN-13",4500),
+			(2,"1-JAN-13",3500);
+
+QUESTION & QUERY :
+
+1. Get First_Name from employee table using alias name “Employee Name”.
+
+ANSWER : SELECT First_name AS Employee_Name FROM employee;
+
+**************************************************************************************************************************
+
+2. Get FIRST_NAME, Joining year, Joining Month and Joining Date fromemployee
+table.
+
+ANSWER : SELECT First_name,Joining_date FROM employee;
+
+**************************************************************************************************************************
+
+3. Get all employee details from the employee table order by First_NameAscending 
+and Salary descending.
+
+ANSWER : (i) SELECT *FROM employee ORDER BY First_name;  //First_Name Ascending 
+	   (ii) SELECT *FROM employee ORDER BY salary DESC ; // Salary descending
+
+**************************************************************************************************************************
+
+4. Get employee details from employee table whose first name contains ‘o’.
+Get employee details from employee table whose joining month is “january” .
+
+ANSWER:  (i) select * from employee where First_name like '%o%';  // first name contains ‘o’
+	   (ii)select * from employee where Joining_date like '%JAN%'; // joining month is “january”
+
+************************************************************************************************************************** 
+
+5. Get department, total salary with respect to a department from employeetable order 
+by total salary descending.
+
+ANSWER : SELECT Department,salary FROM employee ORDER BY salary DESC;
+**************************************************************************************************************************
+6. Get department wise maximum salary from employee table order by salary
+ascending.
+
+ANSWER : SELECT Department ,MAX(salary) from employee GROUP BY Department;
+
+**************************************************************************************************************************
+
+7. Select first_name, incentive amount from employee and incentives table for those
+employees who have incentives and incentive amount greater than 3000.
+
+ANSWER : SELECT employee.First_name,incentive.Incentive_amount
+	   FROM employee INNER JOIN incentive 
+	   ON employee.Employee_id=incentive.Employee_Ref_id 
+	   AND Incentive_amount>3000;
+
+**************************************************************************************************************************
+
+8. Select 2nd Highest salary from employee table.
+ANSWER :  SELECT MAX(SALARY) FROM employees 
+	    WHERE SALARY < (SELECT MAX(SALARY) FROM employees);
+
+**************************************************************************************************************************
+
+9. Select first_name, incentive amount from employee and incentives table for all
+employees who got incentives using left join.
+
+ANSWER : SELECT employee.First_name,incentive.Incentive_amount 
+	   FROM employee LEFT JOIN incentive
+	   ON employee.Employee_id=incentive.Employee_Ref_id;
+
+**************************************************************************************************************************
+
+10. Create View OF Employee table in which store first name ,last name andsalary
+only.
+
+ANSWER : CREATE VIEW newTable AS SELECT First_name,Last_name,salary FROM employee;
+
+**************************************************************************************************************************
+
+12. Create After Insert trigger on Employee table which insert records in view table . 
+
+
+
+
+
+
+

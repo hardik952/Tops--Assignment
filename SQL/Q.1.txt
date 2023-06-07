@@ -1,0 +1,24 @@
+CREATE TABLE student1 (RollNumber int AUTO_INCREMENT,
+                      Name varchar(200),
+                      Branch varchar(200),
+                      PRIMARY KEY (RollNumber);
+                      )
+INSERT into student1(Name,Branch)
+			VALUES ("Parth","Computer Science"),
+            ("Hiren","PetroChemicals Engineering"),
+            ("Hardik","Computer Science");
+
+CREATE TABLE examination (RollNumber int ,
+			 S_code varchar(200),
+			 Marks int,
+			 P_code varchar(200),
+			 Foreign key(RollNumber) references student1 (RollNumber));
+                      
+            		
+INSERT into examination (RollNumber,S_code ,Marks,P_code)
+			VALUES (1,"PCE11",50,"PCE"),
+			(1,"PCE12",60,"PCE"),
+                        (2,"CS111",66,"CS"),
+                        (2,"CS112",70,"CS"),
+                        (3,"CS113",45,"CS"),
+                        (3,"CS114",50,"CS");

@@ -1,0 +1,108 @@
+Que 1]1. SQL Practices Table Name : Student and Exam.
+
+CREATE DATABASE person;
+CREATE TABLE intro(First_Name varchar(100),
+             Last_Name varchar(100),
+             Address varchar(100),
+             City varchar(200),
+             Age int);
+
+INSERT INTO intro(First_Name,Last_Name,Address,City,Age)
+                 VALUES("Mickey","Mouse","123 Fantasy Way",73),
+                       ("Bat","Man","321 Cavern Ave","Gotham",54),  
+                       ("Wonder","Women","987 Truth Way","Paradise",39),
+                       ("Donald","Duck","555 Quack Street","Mallard",65),
+                       ("Bugs","Bunny","567 Carrot Street","Rascal",58),
+                       ("Wiley","Coyote","999 Acme Way","Canyon",61),
+                       ("Cat","Women","234 Purrfect Street","Hairball",32),
+                       ("Tweety","Bird","543","Itotltaw",28);
+
+  
+***************************************************************************************
+1) How to Create Table student write an SQL Query?
+-> CREATE TABLE intro(First_Name varchar(100),
+             Last_Name varchar(100),
+             Address varchar(100),
+             City varchar(200),
+             Age int);
+
+2) How to Create a Exam table with Foreign key on roll no write a SQL Query?
+-> CREAT Table student(RollNo int,
+                       StName varchar(100),
+                       StSubject int,
+                       Foreign key(RollNo) REFERANCES student(RollNo)); 
+
+3) What is SQL Key Constraints? Write an Example of SQL Key Constraints?
+-> A unique constraint (also referred to as a unique key constraint) is a rule that
+   forbids duplicate values in one or more columns within a table. 
+   Unique and primary keys are the supported unique constraints.
+   Constraints Ex:
+    CREATE TABLE Persons (ID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);  	
+
+4) What is SQL and How to Create a table with Foreign Key?
+-> SQL is Structured Query Language, which is a computer language for storing,
+   manipulating and retrieving data stored in relational database.
+   Foreign Key: 
+    CREATE TABLE Orders (
+    OrderID int,
+    OrderNumber int,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+);
+
+5) What is trigger and how to Create a Trigger in SQL?
+-> A trigger is a stored procedure in database which automatically invokes whenever a special event 
+   in the database occurs
+   For example, a trigger can be invoked when a row is inserted into a specified table.
+   Trigger Syntax:
+                 create trigger [trigger_name] [before | after]
+                 {insert | update | delete} on [table_name] [for each row] [trigger_body]
+
+6) What is Difference Between DBMS and RDBMS?
+->    
+               RDBMS	                                                DBMS
+  ~ Data stored is in table format	                    ~ Data stored is in the file format
+  ~ Multiple data elements are accessible together	    ~ Individual access of data elements
+  ~ Data in the form of a table are linked together 	    ~ No connection between data
+  ~ Normalisation is not achievable	                    ~ There is normalisation
+  ~ Support distributed database	                    ~ No support for distributed database
+  ~ Data is stored in a large amount	                    ~ Data stored is a small quantity
+  ~ Here, redundancy of data is reduced with 	            ~ Data redundancy is common
+    the help of key and indexes in RDBMS
+  ~ RDBMS supports multiple user                            ~ DBMS supports a single user
+  ~ It features multiple layers of security 	            ~ There is only low security while handling data
+    while handling data
+  ~ The software and hardware requirements are higher	    ~ The software and hardware requirements are low
+  ~ Oracle, SQL Server.	                                    ~ XML, Microsoft Access.
+
+7) What is Normalization?
+-> Normalization is the process of minimizing redundancy (duplicity) from a relation or set of relations.
+•  Redundancy in relation may cause insertion, deletion and updation anomalies. So, it helps to minimize the redundancy in relations.
+
+*  Most Commonly used normal forms:
+
+1} First Normal Form:
+•  First normal form(1NF) Second normal form(2NF) Third normal form(3NF) Boyce & Code normal form (BCNF)
+•  If a relation contain composite or multi-valued attribute, it violates first normal form or a relation is in first normal form 
+   if it does not contain any composite or multi-valued attribute.
+•  A relation is in first normal form if every attribute in that relation is singled valued attribute.
+
+2} Second Normal Form:
+•  To be in second normal form, a relation must be in first normal form and relation must not contain any partial dependency.
+•  relation is in 2NF if it has No Partial Dependency, i.e., no non-prime attribute (attributes which are not part of any candidate key)
+   is dependent on any proper subset of any candidate key of the table.
+•  Partial Dependency –If the proper subset of candidate key determines non-prime attribute, it is called partial dependency.
+
+3}Third Normal Form:
+•  A relation is in third normal form, if there is no transitive dependency for non-prime attributes as well as it is in second normal form.
+•  A relation is in 3NF if at least one of the following condition holds in every non-trivial function dependency X –> Y
+   X is a super key.
+   Y is a prime attribute (each element of Y is part of some candidate key).
+•  Transitive dependency –If A->B and B->C are two FDs then A->C is called transitive dependency.

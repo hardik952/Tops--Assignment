@@ -1,0 +1,55 @@
+CREATE TABLE salseperson ( SNo int ,
+                          SNAME varchar (200),
+                          CITY varchar (200),
+                          COMM double ,
+                          PRIMARY key (SNo));
+
+insert into salseperson (SNAME,CITY,COMM)
+VALUES ("Peel","London",.12),
+ ("Serres","San jose",.13),
+("Motika","London",.11),
+("Rafkin","Barcelona",.15),
+("Axelrod","New York",.1);
+
+CREATE TABLE CUSTOMER ( CNM int ,
+                        CNAME varchar (200),
+                        CITY varchar (200),
+                        RATING double ,
+                        SNo int,PRIMARY key (CNM),
+                        FOREIGN KEY(SNo) REFERENCES salseperson(SNo)
+                         );
+
+insert into customer (CNM,CNAME,CITY,RATING,SNo)
+VALUES (201 ,"Hoffman","London",100,1001),
+ (202 ,"Giovanne","Rome",200,1003),
+(203 ,"Liu","San Jose",300,1002),
+(204 ,"Grass","Barcelona",100,1002),
+(206,"Clemens","London",300,1007),
+(207,"Pereira","Rome",100,1004);
+
+
+
+QUESTIONS & ANSWER :
+
+
+1. Names and cities of all salespeople in London with commission above 0.10.
+
+ANSWER: SELECT SNAME,CITY FROM salseperson WHERE CITY="london" AND COMM>.10;
+
+2. All salespeople either in Barcelona or in London.
+
+ANSWER : SELECT * FROM salseperson WHERE CITY="london" OR CITY="barcelona";
+
+3. All salespeople with commission between 0.10 and 0.12. (Boundary values
+should be excluded).
+
+ANSWER : SELECT *FROM salseperson WHERE COMM > .10 AND COMM<.12;
+
+4. All customers excluding those with rating <= 100 unless they are located in Rome.
+
+ANSWER : SELECT * FROM customer where RATING <=100 OR CITY="Rome";
+
+
+
+
+
